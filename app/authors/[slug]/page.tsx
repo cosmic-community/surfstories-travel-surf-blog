@@ -13,7 +13,7 @@ interface AuthorPageProps {
 export async function generateStaticParams() {
   const authors = await getAuthors()
   
-  return authors.map((author) => ({
+  return authors.map((author: Author) => ({
     slug: author.slug,
   }))
 }
@@ -81,7 +81,7 @@ export default async function AuthorPage({ params }: AuthorPageProps) {
         {/* Posts Grid */}
         {posts.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {posts.map((post) => (
+            {posts.map((post: Post) => (
               <PostCard key={post.id} post={post} showAuthor={false} />
             ))}
           </div>
